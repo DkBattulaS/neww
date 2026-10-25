@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Defining the funtion
+        function greet(name){
+            return "Hello" + name + "!";
+        }
+
+        //calling the functino
+        let msg = greet("alice");
+        console.log(msg);
+
+    //You can also store functions inside variables. These are called anonymous functions (functions without a name) 
+    // when assigned to a variable.
+
+    const add = function(a,b){
+        return a+b;
+    };
+    console.log("Result is"  + add(18,22));
+
+            //Arrow Functions (ES6+)
+//Introduced in modern JavaScript (ES6), arrow functions provide a shorter, 
+//cleaner syntax using the => ("fat arrow") operator.
+
+//regular arrow function
+const multiply=(a,b)=>{
+    return a*b;
+};
+
+const square = x=> x*x;
+console.log(square(4));
+
+                //Default Parameters
+//You can assign default values to your parameters in case no argument is provided 
+// when the function is called.
+
+function welcome(user="Guest"){
+    return `welcome back, ${user}!`;
+}
+console.log(welcome());
+console.log(welcome("Deepak"));
+
+        //Scope (Where do your variables live?)
+//Global Scope: Declared outside any function. 
+// Accessible from anywhere in your code.
+let globalVar = "I am global"; // Global scope
+
+function checkScope(){
+    let localVar= "I am local"; //Local scope
+    console.log(globalVar);
+    console.log(localVar);
+}
+checkScope();
+// console.log(localVar); // Error! localVar is not defined outside the function
+   </script>
+
+   
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //CALLBACK FUNTION
+        //Think of a callback function like giving someone your phone number and telling them to call you when they finish a task.
+
+        //Instead of you standing around waiting, you give them instructions on what to do next once they are done, 
+        //and you go about your day.
+
+        //The maine function
+        function doHomeWork(subject, callback) { //It accepts two inputs (arguments): subject (a piece of text like "Math") and callback (another function).
+            console.log("starting my" + subject + "Homework...");
+            callback(); //This is the magic line! It takes whatever function was passed into 
+            //the callback slot and runs it right here.
+        }
+        //The callback function
+        //You don't write anything special inside the function definition. It becomes a callback at the moment you pass it as 
+        // an argument to another function.
+
+        function alertFinished() {
+            console.log("Im done");
+        }
+
+        //We call our main function. We pass "Math" as the first argument, and we pass our alertFinished function as the 
+        // second argument (the callback).
+
+        doHomeWork("Match", alertFinished);
+
+        //Notice we write alertFinished without parentheses () because we want to pass the function itself, not run it immediately. 
+        // doHomework will decide when to run it.
+
+        //The Scenario: Ordering Coffee ☕
+        //Imagine you go to a coffee shop. You place an order, and the barista needs to know what to do after the coffee is finally ready.
+
+        //Your goal is to write a function that acts as a callback and pass it into the main order function.
+
+
+        //The main order functionड
+
+        function Order(coffeetype, callbackbarista) {
+            console.log("Brewing your " + coffeetype + "......");
+            callbackbarista();
+        }
+
+        //callback funtino drinkCoffee
+        function drinkCoffee() {
+            console.log("Ahhh, delicious! ");
+        }
+
+        //call the main function
+        Order("Caramel Latte", drinkCoffee);
+
+        //Asynchronous Callbacks & Timer Queue
+
+        console.log("Start");
+        setTimeout(function () {
+            console.log("Timeout 1");
+        }, 0);
+        console.log("end");
+
+
+        //DIFFERERNCE between Synchronous and Asynchronous
+
+        //1. Synchronous Code (Step-by-Step)
+        //In synchronous programming, JavaScript executes your code line by line, strictly in order. 
+        // Each line must completely finish before the computer moves on to the next one
+        //EXAMPLE
+        console.log("1. First: Pour the milk");
+        console.log("2. Second: Eat the cereal");
+        console.log("3. Third: Wash the bowl");
+        //Asynchronous Code (Waiting without Blocking)
+
+        //In asynchronous programming, if a task takes time (like downloading a file, fetching data from a server, or waiting for a timer), 
+        // JavaScript starts the task, leaves it running in the background, and immediately moves on to the next lines of code.
+        //When the background task finally finishes, it uses a callback function to report back.
+        console.log("1. Start downloading the game...");
+
+        // setTimeout simulates a slow task taking 3 seconds
+        setTimeout(function () {
+            console.log("3. Download complete! (Callback executed)");
+        }, 3000);
+
+        console.log("2. Keep browsing social media while it downloads...");
+  
+  //The Scenario: Pizza Delivery 🍕
+
+  //The main function
+  function orderPizza(flavour,onDeliveryCallback){
+    console.log("Ordering a"+ flavour+" pizza ..");
+    setTimeout(function(){
+        console.log("Pizza deleiverd")
+    },5000);
+    onDeliveryCallback();
+  }
+
+  //callback function
+  function eatPizza(){
+    console.log("yay! Eating the hot piza")
+  }
+
+  orderPizza("Farmhouse",eatPizza);
+  </script>
+
+</body>
+
+</html>
